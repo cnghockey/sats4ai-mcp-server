@@ -1,0 +1,13 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.sats4ai/bitcoin-ai-tools",
+  "title": "Sats4AI - Bitcoin-Powered AI Tools",
+  "description": "Bitcoin-powered AI tools via Lightning micropayments. No signup or API keys required.",
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://sats4ai.com/api/mcp"
+    }
+  ]
+}
