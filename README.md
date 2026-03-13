@@ -1,5 +1,9 @@
 # Sats4AI MCP Server
 
+<a href="https://glama.ai/mcp/servers/cnghockey/sats4ai">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/cnghockey/sats4ai/badge" />
+</a>
+
 Bitcoin-powered AI tools marketplace accessible via the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/). Pay with Lightning Network micropayments — no signup or API keys required.
 
 ## MCP Endpoint
