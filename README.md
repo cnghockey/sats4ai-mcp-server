@@ -1,18 +1,16 @@
-# Sats4AI MCP Server
+# sats4ai-mcp
 
 <a href="https://glama.ai/mcp/servers/cnghockey/sats4ai">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/cnghockey/sats4ai/badge" />
 </a>
 
-Bitcoin-powered AI tools marketplace accessible via the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/). Pay with Lightning Network micropayments — no signup or API keys required.
+**20+ AI tools paid with Bitcoin Lightning. No signup, no API keys, no KYC.**
 
-## MCP Endpoint
+A remote [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that gives AI agents access to image generation, video creation, text generation, speech, OCR, email, SMS, voice cloning, and more — all paid per-use with Lightning Network micropayments.
 
-```
-https://sats4ai.com/api/mcp
-```
+## Quick Setup
 
-### Connect with Claude Desktop
+### Claude Desktop
 
 Add to your `claude_desktop_config.json`:
 
@@ -26,43 +24,177 @@ Add to your `claude_desktop_config.json`:
 }
 ```
 
+### Claude Code
+
+```bash
+claude mcp add sats4ai --transport http https://sats4ai.com/api/mcp
+```
+
+### Cursor
+
+Add to your MCP settings:
+
+```json
+{
+  "mcpServers": {
+    "sats4ai": {
+      "url": "https://sats4ai.com/api/mcp"
+    }
+  }
+}
+```
+
+### stdio proxy (legacy MCP clients)
+
+For clients that don't support remote HTTP servers, use the bundled stdio proxy:
+
+```bash
+npx sats4ai-mcp
+```
+
+Or in your config:
+
+```json
+{
+  "mcpServers": {
+    "sats4ai": {
+      "command": "npx",
+      "args": ["sats4ai-mcp"]
+    }
+  }
+}
+```
+
+### Any MCP Client
+
+The server URL is:
+
+```
+https://sats4ai.com/api/mcp
+```
+
+This is a remote HTTP server — no local process, no dependencies, no installation needed.
+
 ## Available Tools
 
-| Tool | Description | Price (sats) |
-|------|-------------|-------------|
-| `create_payment` | Create a Lightning invoice for a service | free |
-| `check_payment_status` | Verify a payment has been received | free |
-| `list_models` | List available AI models with pricing | free |
-| `get_model_pricing` | Get pricing for a specific model | free |
-| `generate_image` | Generate AI images from text prompts | ~100 |
-| `generate_text` | Chat with AI or generate content | ~21 |
-| `generate_video` | Generate video from text prompts | ~2500 |
-| `generate_video_from_image` | Animate an image into a video | ~2500 |
-| `generate_music` | Create original AI-composed music | ~500 |
-| `synthesize_speech` | Convert text to speech | ~50 |
-| `transcribe_audio` | Transcribe audio to text | ~10/min |
-| `generate_3d_model` | Generate 3D models from images | ~200 |
-| `analyze_image` | Analyze image content with vision AI | ~50 |
-| `extract_text_ocr` | Extract text from PDFs and images | ~10/page |
-| `convert_file` | Convert files between 200+ formats | ~100 |
-| `check_job_status` | Check status of an async job | free |
-| `get_job_result` | Get the result of a completed job | free |
-| `send_sms` | Send SMS messages worldwide | ~1500 |
-| `place_call` | Make automated phone calls worldwide | ~1500 |
+### AI Generation
+| Tool | Description | Price |
+|------|-------------|-------|
+| `image` | Generate images from text prompts | 100-200 sats |
+| `video` | Generate videos from text prompts | 50 sats/unit |
+| `video_from_image` | Animate a still image into video | 100 sats/sec |
+| `text` | Chat with AI language models (262K context) | ~1 sat/100 chars |
+| `music` | Generate songs with AI vocals | 100 sats |
+| `3d` | Convert a photo to a 3D GLB model | 350 sats |
 
-## How Payment Works
+### Audio & Speech
+| Tool | Description | Price |
+|------|-------------|-------|
+| `tts` | Text to speech with multiple voices | 300 sats |
+| `transcription` | Speech to text (13 languages) | 10 sats/min |
+| `voice_clone` | Clone a voice from an audio sample | 7,500 sats |
 
-1. Call `create_payment` with the tool name and model ID
-2. Receive a Lightning Network invoice
-3. Pay the invoice with any Lightning wallet
-4. Call the tool with the `paymentId` to get your result
+### Vision & Documents
+| Tool | Description | Price |
+|------|-------------|-------|
+| `vision` | Analyze and describe image content | 21 sats |
+| `ocr` | Extract text from PDFs and images | 10 sats/page |
+| `file_convert` | Convert between 200+ file formats | 100 sats |
+| `image_edit` | Edit images with AI instructions | Dynamic |
+| `pdf_merge` | Merge multiple PDFs into one | 100 sats |
 
-All payments use the [L402](https://docs.lightning.engineering/the-lightning-network/l402) protocol — HTTP 402 + Lightning invoices.
+### Communication
+| Tool | Description | Price |
+|------|-------------|-------|
+| `email` | Send email to any address | 200 sats |
+| `sms` | Send SMS worldwide | Dynamic |
+| `call` | Place automated phone calls | Dynamic |
+
+### Helper Tools
+| Tool | Description |
+|------|-------------|
+| `list_models` | Browse available AI models and pricing |
+| `get_model_pricing` | Get pricing for a specific model |
+| `create_payment` | Create a Lightning invoice for a service |
+| `check_payment_status` | Check if payment was received |
+| `check_job_status` | Poll async jobs (video, 3D) |
+| `get_job_result` | Get completed job results |
+
+## How It Works
+
+1. **Agent calls `list_models`** to discover available models and pricing
+2. **Agent calls `create_payment`** — gets a Lightning invoice
+3. **Payment is made** via the agent's Lightning wallet (e.g., [lightning-wallet-mcp](https://www.npmjs.com/package/lightning-wallet-mcp))
+4. **Agent calls the tool** (e.g., `image`, `text`) with the `paymentId`
+5. **Result is returned** — base64 image, text, URL, etc.
+
+No API keys. No accounts. No rate limits tied to identity. Just Bitcoin and AI.
+
+## Payment via Agent Wallets
+
+Pair with a Lightning wallet MCP server so your agent can pay autonomously:
+
+```json
+{
+  "mcpServers": {
+    "sats4ai": {
+      "url": "https://sats4ai.com/api/mcp"
+    },
+    "lightning-wallet": {
+      "command": "npx",
+      "args": ["lightning-wallet-mcp"]
+    }
+  }
+}
+```
+
+The agent uses `lightning-wallet` to pay invoices from `sats4ai`, enabling fully autonomous AI tool usage.
+
+## L402 API
+
+For direct HTTP integration without MCP, use the L402 API:
+
+```bash
+# Step 1: Request -> get 402 + Lightning invoice
+curl -X POST https://sats4ai.com/api/l402/image \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "a cat in space"}' -i
+
+# Step 2: Pay the invoice with any Lightning wallet
+
+# Step 3: Re-send with proof
+curl -X POST https://sats4ai.com/api/l402/image \
+  -H "Content-Type: application/json" \
+  -H "Authorization: L402 <macaroon>:<preimage>" \
+  -d '{"prompt": "a cat in space"}'
+```
+
+Full L402 docs: [sats4ai.com/l402](https://sats4ai.com/l402)
+
+## Service Discovery
+
+Machine-readable service manifest:
+
+```
+GET https://sats4ai.com/.well-known/l402-services
+```
+
+## Programmatic Usage
+
+```js
+const { SERVER_URL, TOOLS, getClaudeConfig } = require("sats4ai-mcp");
+
+console.log(SERVER_URL);       // "https://sats4ai.com/api/mcp"
+console.log(TOOLS);            // ["image", "video", "text", ...]
+console.log(getClaudeConfig()) // { mcpServers: { sats4ai: { url: "..." } } }
+```
 
 ## Links
 
-- **Website**: [https://sats4ai.com](https://sats4ai.com)
-- **MCP Documentation**: [https://sats4ai.com/mcp](https://sats4ai.com/mcp)
+- **Website**: [sats4ai.com](https://sats4ai.com)
+- **MCP Docs**: [sats4ai.com/mcp](https://sats4ai.com/mcp)
+- **L402 API Docs**: [sats4ai.com/l402](https://sats4ai.com/l402)
+- **Service Discovery**: [sats4ai.com/.well-known/l402-services](https://sats4ai.com/.well-known/l402-services)
 
 ## License
 

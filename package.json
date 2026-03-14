@@ -1,0 +1,66 @@
+{
+  "name": "sats4ai-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for 20+ AI tools paid with Bitcoin Lightning. Image, video, text, audio, OCR, email, SMS, voice cloning, and more. No signup required.",
+  "main": "index.js",
+  "bin": {
+    "sats4ai-mcp": "./server.js"
+  },
+  "types": "index.d.ts",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "bitcoin",
+    "lightning",
+    "lightning-network",
+    "sats",
+    "satoshis",
+    "l402",
+    "image-generation",
+    "text-generation",
+    "video-generation",
+    "text-to-speech",
+    "speech-to-text",
+    "ocr",
+    "voice-cloning",
+    "music-generation",
+    "file-conversion",
+    "3d-model",
+    "vision",
+    "email",
+    "sms",
+    "phone-call",
+    "image-editing",
+    "pdf-merge",
+    "pay-per-use",
+    "no-signup",
+    "privacy",
+    "anonymous",
+    "ai-tools",
+    "claude",
+    "cursor",
+    "agent"
+  ],
+  "author": "cnghockey",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cnghockey/sats4ai-mcp-server"
+  },
+  "homepage": "https://sats4ai.com/mcp",
+  "bugs": {
+    "url": "https://github.com/cnghockey/sats4ai-mcp-server/issues"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "server.js",
+    "server.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
