@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Documentation
+    url: https://sats4ai.com/mcp
+    about: MCP and L402 integration guides
+  - name: Service Discovery
+    url: https://sats4ai.com/.well-known/mcp
+    about: Machine-readable MCP server manifest
+  - name: L402 Service Catalog
+    url: https://sats4ai.com/.well-known/l402-services
+    about: L402 endpoint catalog with pricing

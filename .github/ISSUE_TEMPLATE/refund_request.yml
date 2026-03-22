@@ -1,0 +1,36 @@
+name: Refund Request
+description: Request a refund for a failed or incorrect service
+title: "[Refund]: "
+labels: ["refund"]
+body:
+  - type: input
+    id: payment_id
+    attributes:
+      label: Payment ID
+      description: The paymentId returned by create_payment or the L402 charge ID.
+    validations:
+      required: true
+  - type: input
+    id: email
+    attributes:
+      label: Contact email
+      description: We will notify you when the refund is processed.
+    validations:
+      required: true
+  - type: dropdown
+    id: protocol
+    attributes:
+      label: Protocol used
+      options:
+        - MCP
+        - L402
+        - Web
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What went wrong?
+      description: Describe what happened after payment.
+    validations:
+      required: true

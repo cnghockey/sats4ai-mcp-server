@@ -1,0 +1,88 @@
+name: Bug Report
+description: Report a problem with Sats4AI services
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: protocol
+    attributes:
+      label: Protocol / Interface
+      description: How were you accessing the service?
+      options:
+        - MCP (JSON-RPC via sats4ai.com/api/mcp)
+        - L402 (REST API with Lightning auth)
+        - Web (sats4ai.com dashboard)
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Tool / Service
+      description: Which tool or service was affected?
+      options:
+        - generate_image
+        - edit_image
+        - generate_text
+        - analyze_image (vision)
+        - generate_music
+        - text_to_speech
+        - transcribe_audio
+        - extract_document (OCR)
+        - extract_receipt (receipt OCR)
+        - translate_text
+        - convert_file
+        - merge_pdfs
+        - convert_html_to_pdf
+        - send_email
+        - send_sms
+        - place_call
+        - generate_video
+        - animate_image (video from image)
+        - generate_3d_model
+        - clone_voice
+        - create_payment
+        - check_payment_status
+        - check_job_status / get_job_result
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the issue. Include error messages, HTTP status codes, or unexpected responses.
+      placeholder: "I called generate_image with prompt 'sunset over mountains' and got a 500 error..."
+    validations:
+      required: true
+  - type: textarea
+    id: request
+    attributes:
+      label: Request details
+      description: Include the request body, headers, or tool call parameters (redact any sensitive data).
+      render: json
+  - type: textarea
+    id: response
+    attributes:
+      label: Response received
+      description: Paste the error response or unexpected output.
+      render: json
+  - type: input
+    id: payment_id
+    attributes:
+      label: Payment ID (if applicable)
+      description: If you paid for the service and it failed, include the paymentId for refund processing.
+  - type: dropdown
+    id: caller
+    attributes:
+      label: Caller type
+      options:
+        - AI Agent (Claude, GPT, etc.)
+        - Human (manual API call)
+        - Script / Application
+        - Other
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Any other details (timestamps, agent framework, wallet used, etc.)
