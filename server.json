@@ -1,13 +1,21 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "com.sats4ai/bitcoin-ai-tools",
+  "name": "io.github.cnghockey/sats4ai",
   "title": "Sats4AI - Bitcoin-Powered AI Tools",
-  "description": "Bitcoin-powered AI tools via Lightning micropayments. No signup or API keys required.",
-  "version": "1.0.0",
-  "remotes": [
+  "description": "25+ AI tools paid via Lightning Network. No signup, no KYC, pay-per-call.",
+  "repository": {
+    "url": "https://github.com/cnghockey/sats4ai-mcp-server",
+    "source": "github"
+  },
+  "version": "1.0.2",
+  "packages": [
     {
-      "type": "streamable-http",
-      "url": "https://sats4ai.com/api/mcp"
+      "registryType": "npm",
+      "identifier": "sats4ai-mcp",
+      "version": "1.0.2",
+      "transport": {
+        "type": "stdio"
+      }
     }
   ]
 }
