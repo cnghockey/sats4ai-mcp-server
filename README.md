@@ -4,9 +4,9 @@
   <img width="380" height="200" src="https://glama.ai/mcp/servers/cnghockey/sats4ai/badge" />
 </a>
 
-**20+ AI tools paid with Bitcoin Lightning. No signup, no API keys, no KYC.**
+**25+ AI tools paid with Bitcoin Lightning. No signup, no API keys, no KYC.**
 
-A remote [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that gives AI agents access to image generation, video creation, text generation, speech, OCR, email, SMS, voice cloning, and more — all paid per-use with Lightning Network micropayments.
+A remote [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that gives AI agents access to image generation, video creation, text generation, speech, OCR, audiobook conversion, email, SMS, voice cloning, and more — all paid per-use with Lightning Network micropayments.
 
 ## Quick Setup
 
@@ -99,6 +99,7 @@ This is a remote HTTP server — no local process, no dependencies, no installat
 |------|-------------|-------|
 | `vision` | Analyze and describe image content | 21 sats |
 | `ocr` | Extract text from PDFs and images | 10 sats/page |
+| `epub_to_audiobook` | Convert books (EPUB/PDF/TXT) to AI-narrated audiobooks | 500+ sats |
 | `file_convert` | Convert between 200+ file formats | 100 sats |
 | `image_edit` | Edit images with AI instructions | Dynamic |
 | `pdf_merge` | Merge multiple PDFs into one | 100 sats |

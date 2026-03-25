@@ -29,6 +29,7 @@ const TOOLS = [
   "voice_clone",
   "image_edit",
   "pdf_merge",
+  "epub_to_audiobook",
 ];
 
 const HELPER_TOOLS = [
