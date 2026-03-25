@@ -170,7 +170,7 @@ curl -X POST https://sats4ai.com/api/l402/image \
   -d '{"prompt": "a cat in space"}'
 ```
 
-Full L402 docs: [sats4ai.com/l402](https://sats4ai.com/l402)
+Full L402 docs: [sats4ai.com/l402](https://sats4ai.com/l402) | Code examples: [sats4ai-l402-examples](https://github.com/cnghockey/sats4ai-l402-examples)
 
 ## Service Discovery
 
@@ -195,6 +195,7 @@ console.log(getClaudeConfig()) // { mcpServers: { sats4ai: { url: "..." } } }
 - **Website**: [sats4ai.com](https://sats4ai.com)
 - **MCP Docs**: [sats4ai.com/mcp](https://sats4ai.com/mcp)
 - **L402 API Docs**: [sats4ai.com/l402](https://sats4ai.com/l402)
+- **L402 Code Examples**: [github.com/cnghockey/sats4ai-l402-examples](https://github.com/cnghockey/sats4ai-l402-examples)
 - **Service Discovery**: [sats4ai.com/.well-known/l402-services](https://sats4ai.com/.well-known/l402-services)
 
 ## License
