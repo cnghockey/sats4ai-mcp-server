@@ -4,9 +4,9 @@
   <img width="380" height="200" src="https://glama.ai/mcp/servers/cnghockey/sats4ai/badge" />
 </a>
 
-**25+ AI tools paid with Bitcoin Lightning. No signup, no API keys, no KYC.**
+**33+ AI tools paid with Bitcoin Lightning. No signup, no API keys, no KYC.**
 
-A remote [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that gives AI agents access to image generation, video creation, text generation, speech, OCR, audiobook conversion, email, SMS, voice cloning, and more — all paid per-use with Lightning Network micropayments.
+A remote [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that gives AI agents access to image generation, video creation, text generation, speech, translation, image processing, OCR, audiobook conversion, email, SMS, voice cloning, and more — all paid per-use with Lightning Network micropayments.
 
 ## Quick Setup
 
@@ -84,25 +84,40 @@ This is a remote HTTP server — no local process, no dependencies, no installat
 | `video` | Generate videos from text prompts | 50 sats/unit |
 | `video_from_image` | Animate a still image into video | 100 sats/sec |
 | `text` | Chat with AI language models (262K context) | ~1 sat/100 chars |
+| `translate_text` | Translate text across 119 languages | ~1 sat/1000 chars |
 | `music` | Generate songs with AI vocals | 100 sats |
 | `3d` | Convert a photo to a 3D GLB model | 350 sats |
 
 ### Audio & Speech
 | Tool | Description | Price |
 |------|-------------|-------|
-| `tts` | Text to speech with multiple voices | 300 sats |
+| `tts` | Text to speech (467 voices, 29 languages) | 300 sats |
 | `transcription` | Speech to text (13 languages) | 10 sats/min |
 | `voice_clone` | Clone a voice from an audio sample | 7,500 sats |
+| `epub_to_audiobook` | Convert books (EPUB/PDF/TXT) to AI-narrated audiobooks | 500+ sats |
+
+### Image Processing
+| Tool | Description | Price |
+|------|-------------|-------|
+| `remove_background` | Remove background from any image (BiRefNet, SOTA) | 5 sats |
+| `upscale_image` | Upscale images 2x/4x with Real-ESRGAN | 5 sats |
+| `restore_face` | Restore blurry/damaged faces (CodeFormer) | 5 sats |
+| `colorize_image` | Colorize B&W photos (DDColor, ICCV 2023) | 5 sats |
+| `deblur_image` | Remove camera-shake blur (NAFNet, ECCV 2022) | 20 sats |
+| `detect_nsfw` | Classify image safety (normal/suggestive/explicit) | 2 sats |
+| `detect_objects` | Detect objects with bounding boxes (Grounding DINO) | 5 sats |
+| `remove_object` | Remove objects by description — no mask needed | 15 sats |
+| `image_edit` | Edit images with AI instructions | Dynamic |
 
 ### Vision & Documents
 | Tool | Description | Price |
 |------|-------------|-------|
 | `vision` | Analyze and describe image content | 21 sats |
 | `ocr` | Extract text from PDFs and images | 10 sats/page |
-| `epub_to_audiobook` | Convert books (EPUB/PDF/TXT) to AI-narrated audiobooks | 500+ sats |
+| `extract_receipt` | Receipt to structured JSON | 50 sats |
 | `file_convert` | Convert between 200+ file formats | 100 sats |
-| `image_edit` | Edit images with AI instructions | Dynamic |
 | `pdf_merge` | Merge multiple PDFs into one | 100 sats |
+| `convert_html_to_pdf` | HTML/Markdown to PDF | 50 sats |
 
 ### Communication
 | Tool | Description | Price |
@@ -110,6 +125,7 @@ This is a remote HTTP server — no local process, no dependencies, no installat
 | `email` | Send email to any address | 200 sats |
 | `sms` | Send SMS worldwide | Dynamic |
 | `call` | Place automated phone calls | Dynamic |
+| `ai_call` | AI voice agent phone calls (async) | Dynamic |
 
 ### Helper Tools
 | Tool | Description |
@@ -118,8 +134,11 @@ This is a remote HTTP server — no local process, no dependencies, no installat
 | `get_model_pricing` | Get pricing for a specific model |
 | `create_payment` | Create a Lightning invoice for a service |
 | `check_payment_status` | Check if payment was received |
-| `check_job_status` | Poll async jobs (video, 3D) |
+| `check_job_status` | Poll async jobs (video, 3D, audiobook) |
 | `get_job_result` | Get completed job results |
+| `request_refund` | Request a refund for a failed service |
+| `vote_on_service` | Upvote or downvote a planned service |
+| `list_planned_services` | See upcoming services and vote |
 
 ## How It Works
 
@@ -157,28 +176,40 @@ For direct HTTP integration without MCP, use the L402 API:
 
 ```bash
 # Step 1: Request -> get 402 + Lightning invoice
-curl -X POST https://sats4ai.com/api/l402/image \
+curl -X POST https://sats4ai.com/api/l402/generate-image \
   -H "Content-Type: application/json" \
-  -d '{"prompt": "a cat in space"}' -i
+  -d '{"input": {"prompt": "a cat in space"}}' -i
 
 # Step 2: Pay the invoice with any Lightning wallet
 
 # Step 3: Re-send with proof
-curl -X POST https://sats4ai.com/api/l402/image \
+curl -X POST https://sats4ai.com/api/l402/generate-image \
   -H "Content-Type: application/json" \
   -H "Authorization: L402 <macaroon>:<preimage>" \
-  -d '{"prompt": "a cat in space"}'
+  -d '{"input": {"prompt": "a cat in space"}}'
 ```
 
 Full L402 docs: [sats4ai.com/l402](https://sats4ai.com/l402) | Code examples: [sats4ai-l402-examples](https://github.com/cnghockey/sats4ai-l402-examples)
 
 ## Service Discovery
 
-Machine-readable service manifest:
+Machine-readable endpoints for agent discovery:
 
-```
+```bash
+# Full service catalog with pricing, quality benchmarks, and performance metadata
 GET https://sats4ai.com/.well-known/l402-services
+
+# MCP tool catalog with latency (p50/p95), reliability, and failure modes
+GET https://sats4ai.com/api/mcp/discovery
+
+# Semantic search — find tools by capability
+GET https://sats4ai.com/api/discover?q=translate
+
+# Per-service metadata with enums and input schemas
+GET https://sats4ai.com/api/l402/{service}
 ```
+
+Every paid tool includes **performance metadata** (latency p50/p95, reliability rating, known failure modes) so agents can make informed decisions about which tools to call and how long to wait.
 
 ## Programmatic Usage
 
@@ -197,6 +228,7 @@ console.log(getClaudeConfig()) // { mcpServers: { sats4ai: { url: "..." } } }
 - **L402 API Docs**: [sats4ai.com/l402](https://sats4ai.com/l402)
 - **L402 Code Examples**: [github.com/cnghockey/sats4ai-l402-examples](https://github.com/cnghockey/sats4ai-l402-examples)
 - **Service Discovery**: [sats4ai.com/.well-known/l402-services](https://sats4ai.com/.well-known/l402-services)
+- **Semantic Search**: [sats4ai.com/api/discover](https://sats4ai.com/api/discover)
 
 ## License
 
