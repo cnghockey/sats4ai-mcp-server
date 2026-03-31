@@ -1,5 +1,5 @@
 /**
- * sats4ai-mcp — 25+ AI tools paid with Bitcoin Lightning
+ * sats4ai-mcp — 33+ AI tools paid with Bitcoin Lightning
  *
  * This is a remote MCP server. No local process needed.
  * Add the URL to your MCP client config and start using tools immediately.
@@ -34,6 +34,14 @@ const TOOLS = [
   "translate_text",
   "extract_receipt",
   "ai_call",
+  "remove_background",
+  "upscale_image",
+  "restore_face",
+  "detect_nsfw",
+  "detect_objects",
+  "remove_object",
+  "colorize_image",
+  "deblur_image",
 ];
 
 const HELPER_TOOLS = [
