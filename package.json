@@ -1,7 +1,7 @@
 {
   "name": "sats4ai-mcp",
-  "version": "1.1.0",
-  "description": "MCP server for 25+ AI tools paid with Bitcoin Lightning. Image, video, text, audio, OCR, audiobook, email, SMS, voice cloning, and more. No signup required.",
+  "version": "1.2.0",
+  "description": "MCP server for 33+ AI tools paid with Bitcoin Lightning. Image generation, video, text, audio, translation, image processing, OCR, audiobook, email, SMS, voice cloning, and more. No signup required.",
   "main": "index.js",
   "bin": {
     "sats4ai-mcp": "./server.js"
@@ -32,6 +32,15 @@
     "sms",
     "phone-call",
     "image-editing",
+    "image-processing",
+    "background-removal",
+    "upscaling",
+    "face-restoration",
+    "object-detection",
+    "colorization",
+    "deblurring",
+    "nsfw-detection",
+    "translation",
     "pdf-merge",
     "audiobook",
     "epub",
