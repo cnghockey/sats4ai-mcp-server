@@ -152,25 +152,46 @@ No API keys. No accounts. No rate limits tied to identity. Just Bitcoin and AI.
 
 ## Error Handling & Refunds
 
-When a paid tool fails after payment, the JSON-RPC error response includes refund information:
+When a paid tool fails after payment, the JSON-RPC error response includes an `error_code` and refund information:
 
 ```json
 {
   "jsonrpc": "2.0",
-  "id": 1,
+  "id": 3,
   "error": {
     "code": -32603,
-    "message": "Image generation failed",
+    "message": "Image generation timed out",
     "data": {
+      "error_code": "TIMEOUT",
       "refund": {
         "charge_id": 12345,
         "refund_amount": 200,
-        "lnurl_withdraw": "lnurl1dp68gurn8ghj7..."
+        "lnurl_withdraw": "lnurl1dp68gurn8ghj7...",
+        "status": "pending"
       }
     }
   }
 }
 ```
+
+### Error Codes
+
+| Code | Meaning | Action |
+|------|---------|--------|
+| `TIMEOUT` | Service timed out | Retry later or try different model |
+| `CONTENT_FILTERED` | Safety filter triggered | Rephrase prompt |
+| `RATE_LIMITED` | Too many requests | Wait and retry |
+| `INVALID_INPUT` | Bad parameters | Fix request parameters |
+| `SERVICE_ERROR` | Service failure | Try different model |
+
+### Refund Fields
+
+| Field | Description |
+|-------|-------------|
+| `charge_id` | The original payment charge ID |
+| `refund_amount` | Amount in sats being refunded |
+| `lnurl_withdraw` | LNURL-withdraw string to claim the refund |
+| `status` | Refund status (e.g., `pending`, `claimed`) |
 
 Claim the refund using any LNURL-compatible wallet or the `claim_lnurl_withdraw` tool from `lightning-wallet`.
 
