@@ -150,6 +150,30 @@ This is a remote HTTP server — no local process, no dependencies, no installat
 
 No API keys. No accounts. No rate limits tied to identity. Just Bitcoin and AI.
 
+## Error Handling & Refunds
+
+When a paid tool fails after payment, the JSON-RPC error response includes refund information:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32603,
+    "message": "Image generation failed",
+    "data": {
+      "refund": {
+        "charge_id": 12345,
+        "refund_amount": 200,
+        "lnurl_withdraw": "lnurl1dp68gurn8ghj7..."
+      }
+    }
+  }
+}
+```
+
+Claim the refund using any LNURL-compatible wallet or the `claim_lnurl_withdraw` tool from `lightning-wallet`.
+
 ## Payment via Agent Wallets
 
 Pair with a Lightning wallet MCP server so your agent can pay autonomously:
