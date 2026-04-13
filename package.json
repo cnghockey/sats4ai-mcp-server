@@ -1,6 +1,6 @@
 {
   "name": "sats4ai-mcp",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "MCP server for 33+ AI tools paid with Bitcoin Lightning. Image generation, video, text, audio, translation, image processing, OCR, audiobook, email, SMS, voice cloning, and more. No signup required.",
   "main": "index.js",
   "bin": {

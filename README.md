@@ -91,10 +91,10 @@ This is a remote HTTP server — no local process, no dependencies, no installat
 ### Audio & Speech
 | Tool | Description | Price |
 |------|-------------|-------|
-| `tts` | Text to speech (467 voices, 29 languages) | 300 sats |
+| `tts` | Text-to-speech with 3 tiers: OmniVoice Global (602+ langs), Inworld Premium (#1 ranked TTS ELO 1217), Minimax Studio (voice cloning) | 10-100 chars/sat |
 | `transcription` | Speech to text (13 languages) | 10 sats/min |
 | `voice_clone` | Clone a voice from an audio sample | 7,500 sats |
-| `epub_to_audiobook` | Convert books (EPUB/PDF/TXT) to AI-narrated audiobooks | 500+ sats |
+| `epub_to_audiobook` | Convert books (EPUB/PDF/TXT) to full audiobooks with chapter markers, optional translation. Same 3 TTS tiers. | 500+ sats |
 
 ### Image Processing
 | Tool | Description | Price |
