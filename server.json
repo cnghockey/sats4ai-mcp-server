@@ -7,12 +7,12 @@
     "url": "https://github.com/cnghockey/sats4ai-mcp-server",
     "source": "github"
   },
-  "version": "1.4.0",
+  "version": "1.4.1",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "sats4ai-mcp",
-      "version": "1.4.0",
+      "version": "1.4.1",
       "transport": {
         "type": "stdio"
       }
