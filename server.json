@@ -17,5 +17,11 @@
         "type": "stdio"
       }
     }
+  ],
+  "remotes": [
+    {
+      "transportType": "streamable-http",
+      "url": "https://sats4ai.com/api/mcp"
+    }
   ]
 }
