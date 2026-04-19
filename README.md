@@ -249,7 +249,7 @@ console.log(getClaudeConfig()) // { mcpServers: { sats4ai: { url: "..." } } }
 
 ## Security
 
-Found a vulnerability? **Do not open a public issue.** Email [security@sats4ai.com](mailto:security@sats4ai.com). See [SECURITY.md](SECURITY.md) for full disclosure policy and scope.
+Found a vulnerability? **Do not open a public issue.** Email [sats4ai@gmail.com](mailto:sats4ai@gmail.com). See [SECURITY.md](SECURITY.md) for full disclosure policy and scope.
 
 ## Links
 
