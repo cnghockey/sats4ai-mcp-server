@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.cnghockey/sats4ai",
   "title": "Sats4AI - Bitcoin-Powered AI Tools",
-  "description": "40+ AI tools paid via Lightning Network. No signup, no KYC, pay-per-call.",
+  "description": "Permissionless communication supercharger for AI agents. 40+ Lightning-paid tools: AI phone calls, voice in 602 languages, translation, fax, SMS, transcription, audiobooks, and more. No signup, no KYC.",
   "repository": {
     "url": "https://github.com/cnghockey/sats4ai-mcp-server",
     "source": "github"

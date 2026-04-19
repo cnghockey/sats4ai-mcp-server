@@ -4,9 +4,9 @@
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@cnghockey/sats4ai/badge" />
 </a>
 
-**40+ AI tools paid with Bitcoin Lightning. No signup, no API keys, no KYC.**
+**The permissionless communication supercharger for AI agents. 40+ tools paid with Bitcoin Lightning. No signup, no API keys, no KYC.**
 
-A remote [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that gives AI agents access to image generation, image processing, video creation, text generation, translation, speech, OCR, audiobook conversion, email, SMS, phone calls, fax (send + receive), voice cloning, and more — all paid per-use with Lightning Network micropayments.
+A remote [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that gives AI agents access to AI phone calls in any language, voice in 602 languages, translation across 119, fax, SMS, transcription, audiobooks, image generation, music, document extraction, and more — all paid per-use with Lightning Network micropayments.
 
 ## Quick Setup
 
