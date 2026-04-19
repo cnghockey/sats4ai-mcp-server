@@ -258,11 +258,8 @@ Found a vulnerability? **Do not open a public issue.** Email [sats4ai@gmail.com]
 - **L402 API Docs**: [sats4ai.com/l402](https://sats4ai.com/l402)
 - **L402 Code Examples**: [github.com/cnghockey/sats4ai-l402-examples](https://github.com/cnghockey/sats4ai-l402-examples)
 - **Service Discovery**: [sats4ai.com/.well-known/l402-services](https://sats4ai.com/.well-known/l402-services)
-<<<<<<< HEAD
 - **Semantic Search**: [sats4ai.com/api/discover](https://sats4ai.com/api/discover)
-=======
 - **Security Policy**: [SECURITY.md](SECURITY.md)
->>>>>>> 30b48a8 (docs: 40+ tools including fax send/receive, bump to 1.5.0)
 
 ## License
 
