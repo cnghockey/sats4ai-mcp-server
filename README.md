@@ -4,9 +4,9 @@
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@cnghockey/sats4ai/badge" />
 </a>
 
-**30+ AI tools paid with Bitcoin Lightning. No signup, no API keys, no KYC.**
+**40+ AI tools paid with Bitcoin Lightning. No signup, no API keys, no KYC.**
 
-A remote [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that gives AI agents access to image generation, video creation, text generation, speech, translation, image processing, OCR, audiobook conversion, email, SMS, voice cloning, and more — all paid per-use with Lightning Network micropayments.
+A remote [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that gives AI agents access to image generation, image processing, video creation, text generation, translation, speech, OCR, audiobook conversion, email, SMS, phone calls, fax (send + receive), voice cloning, and more — all paid per-use with Lightning Network micropayments.
 
 ## Quick Setup
 
@@ -122,10 +122,12 @@ This is a remote HTTP server — no local process, no dependencies, no installat
 ### Communication
 | Tool | Description | Price |
 |------|-------------|-------|
-| `email` | Send email to any address | 200 sats |
-| `sms` | Send SMS worldwide | Dynamic |
-| `call` | Place automated phone calls | Dynamic |
-| `ai_call` | AI voice agent phone calls (async) | Dynamic |
+| `send_email` | Send email to any address | 200 sats |
+| `send_sms` | Send SMS worldwide | Dynamic |
+| `place_call` | Place automated phone calls | Dynamic |
+| `ai_call` | Send an AI voice agent to make a two-way call | Dynamic (~150-250 sats/call) |
+| `send_fax` | Send a fax worldwide (PDF URL or typed text) | 500 sats (≤10 pages), +50 sats/page after |
+| `receive_fax` | Open a 24h window to receive a fax, delivered to email | 500 sats (+200 OCR add-on) |
 
 ### Helper Tools
 | Tool | Description |
@@ -245,6 +247,10 @@ console.log(TOOLS);            // ["image", "video", "text", ...]
 console.log(getClaudeConfig()) // { mcpServers: { sats4ai: { url: "..." } } }
 ```
 
+## Security
+
+Found a vulnerability? **Do not open a public issue.** Email [security@sats4ai.com](mailto:security@sats4ai.com). See [SECURITY.md](SECURITY.md) for full disclosure policy and scope.
+
 ## Links
 
 - **Website**: [sats4ai.com](https://sats4ai.com)
@@ -252,7 +258,11 @@ console.log(getClaudeConfig()) // { mcpServers: { sats4ai: { url: "..." } } }
 - **L402 API Docs**: [sats4ai.com/l402](https://sats4ai.com/l402)
 - **L402 Code Examples**: [github.com/cnghockey/sats4ai-l402-examples](https://github.com/cnghockey/sats4ai-l402-examples)
 - **Service Discovery**: [sats4ai.com/.well-known/l402-services](https://sats4ai.com/.well-known/l402-services)
+<<<<<<< HEAD
 - **Semantic Search**: [sats4ai.com/api/discover](https://sats4ai.com/api/discover)
+=======
+- **Security Policy**: [SECURITY.md](SECURITY.md)
+>>>>>>> 30b48a8 (docs: 40+ tools including fax send/receive, bump to 1.5.0)
 
 ## License
 
