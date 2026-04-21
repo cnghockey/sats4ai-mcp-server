@@ -30,9 +30,11 @@ Add to your `claude_desktop_config.json`:
 claude mcp add sats4ai --transport http https://sats4ai.com/api/mcp
 ```
 
+Verify the connection: ask the agent *"list the first 3 Sats4AI models"* — it should call `list_models` and return results. For agents that pay invoices autonomously, also add a Lightning wallet MCP (see [Payment via Agent Wallets](#payment-via-agent-wallets)).
+
 ### Cursor
 
-Add to your MCP settings:
+Settings → MCP → Edit Config, then add:
 
 ```json
 {
@@ -43,6 +45,24 @@ Add to your MCP settings:
   }
 }
 ```
+
+Restart Cursor. In a new chat, ask *"what Sats4AI tools are available?"* to confirm tool discovery. For autonomous payments, pair with a Lightning wallet MCP (see [Payment via Agent Wallets](#payment-via-agent-wallets)).
+
+### Windsurf
+
+Edit `~/.codeium/windsurf/mcp_config.json` (create it if missing). **Important**: Windsurf uses `serverUrl` (not `url`) for remote HTTP MCP servers:
+
+```json
+{
+  "mcpServers": {
+    "sats4ai": {
+      "serverUrl": "https://sats4ai.com/api/mcp"
+    }
+  }
+}
+```
+
+Restart Windsurf. Sats4AI tools appear in the Cascade tool list. Cascade has a 100-tool cap across all MCPs, so keep the active set lean. For autonomous payments, pair with a Lightning wallet MCP (see [Payment via Agent Wallets](#payment-via-agent-wallets)).
 
 ### stdio proxy (legacy MCP clients)
 
