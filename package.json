@@ -1,6 +1,6 @@
 {
   "name": "sats4ai-mcp",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Permissionless communication supercharger MCP server — 40+ Lightning-paid tools: AI phone calls in any language, voice in 602 languages, translation across 119, fax, SMS, transcription, audiobooks, and more. No signup, no API keys, no KYC.",
   "main": "index.js",
   "bin": {
