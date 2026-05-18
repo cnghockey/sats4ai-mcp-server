@@ -1,0 +1,25 @@
+name: Mirror to Codeberg
+
+on:
+  push:
+    branches: ['**']
+    tags: ['**']
+  delete:
+  workflow_dispatch:
+
+concurrency:
+  group: mirror-codeberg
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mirror clone + push
+        env:
+          CODEBERG_USERNAME: ${{ vars.CODEBERG_USERNAME }}
+          CODEBERG_TOKEN: ${{ secrets.CODEBERG_TOKEN }}
+        run: |
+          git clone --mirror "https://github.com/${{ github.repository }}.git" repo.git
+          cd repo.git
+          git push --mirror "https://${CODEBERG_USERNAME}:${CODEBERG_TOKEN}@codeberg.org/sats4ai/sats4ai-mcp-server.git"
