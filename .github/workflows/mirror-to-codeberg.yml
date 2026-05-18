@@ -20,6 +20,6 @@ jobs:
           CODEBERG_USERNAME: ${{ vars.CODEBERG_USERNAME }}
           CODEBERG_TOKEN: ${{ secrets.CODEBERG_TOKEN }}
         run: |
-          git clone --mirror "https://github.com/${{ github.repository }}.git" repo.git
+          git clone --bare "https://github.com/${{ github.repository }}.git" repo.git
           cd repo.git
-          git push --mirror "https://${CODEBERG_USERNAME}:${CODEBERG_TOKEN}@codeberg.org/sats4ai/sats4ai-mcp-server.git"
+          git push --force "https://${CODEBERG_USERNAME}:${CODEBERG_TOKEN}@codeberg.org/sats4ai/sats4ai-mcp-server.git" 'refs/heads/*:refs/heads/*' 'refs/tags/*:refs/tags/*'
