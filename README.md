@@ -235,6 +235,15 @@ curl -X POST https://sats4ai.com/api/l402/generate-image \
   -d '{"input": {"prompt": "a cat in space"}}'
 ```
 
+Or skip the manual steps entirely: our L402 endpoints speak the standard L402 protocol, so [**lnget**](https://github.com/lightninglabs/lnget) — Lightning Labs' own L402 client — pays them automatically. Point it at your Lightning node and call the endpoint:
+
+```bash
+lnget -X POST -d '{"text": "Hello", "targetLanguage": "Spanish"}' \
+  --content-type application/json --max-cost 50 \
+  https://sats4ai.com/api/l402/translate-text
+# Fetches the 402, pays the invoice, retries, prints the result.
+```
+
 Full L402 docs: [sats4ai.com/l402](https://sats4ai.com/l402) | Code examples: [sats4ai-l402-examples](https://github.com/cnghockey/sats4ai-l402-examples)
 
 ## Service Discovery
