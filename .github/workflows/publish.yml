@@ -1,0 +1,27 @@
+name: Publish to npm
+
+# Browser-triggered publish: GitHub → Actions tab → "Publish to npm" → Run workflow.
+# Publishes whatever version is in package.json on the default branch. No local CLI,
+# no interactive 2FA OTP — auth is the NPM_TOKEN repo secret. Bump package.json + commit
+# before running to publish a new version.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write   # required for npm provenance (verified-build badge)
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - name: Publish
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
