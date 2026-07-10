@@ -209,6 +209,8 @@ When a paid tool fails after payment, the JSON-RPC error response includes refun
 
 Claim the refund using any LNURL-compatible wallet or the `claim_lnurl_withdraw` tool from `lightning-wallet`.
 
+Errors also carry an `error_code` plus a recovery `suggestion` in `error.data`. Payment-lifecycle codes: `PAYMENT_NOT_FOUND` (wrong paymentId), `PAYMENT_PENDING` (invoice not paid yet), `PAYMENT_ALREADY_USED` (each payment covers one call). Full catalog: `GET https://sats4ai.com/api/error-codes`.
+
 ## Payment via Agent Wallets
 
 Pair with a Lightning wallet MCP server so your agent can pay autonomously:

@@ -13,6 +13,10 @@ const errors = [];
 
 if (card.version !== pkg.version)
   errors.push(`server.json version "${card.version}" != package.json version "${pkg.version}"`);
+// Registry API rejects descriptions over 100 chars (422) even though the JSON
+// schema allows more — caught live 2026-07-10.
+if ((card.description || "").length > 100)
+  errors.push(`server.json description is ${card.description.length} chars — registry caps it at 100`);
 if (card.name !== pkg.mcpName)
   errors.push(`server.json name "${card.name}" != package.json mcpName "${pkg.mcpName}"`);
 
