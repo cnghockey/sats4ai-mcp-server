@@ -21,29 +21,36 @@ body:
       label: Tool / Service
       description: Which tool or service was affected?
       options:
-        - generate_image
-        - edit_image
-        - generate_text
-        - analyze_image (vision)
-        - generate_music
-        - text_to_speech
-        - transcribe_audio
-        - extract_document (OCR)
-        - extract_receipt (receipt OCR)
+        - image
+        - image_edit
+        - text
+        - vision
+        - music
+        - tts (text to speech)
+        - transcription
+        - voice_clone
+        - epub_to_audiobook
+        - ocr
+        - extract_receipt
         - translate_text
-        - convert_file
-        - merge_pdfs
+        - file_convert
+        - pdf_merge
         - convert_html_to_pdf
         - send_email
         - send_sms
         - place_call
-        - generate_video
-        - animate_image (video from image)
-        - generate_3d_model
-        - clone_voice
+        - ai_call
+        - send_fax / receive_fax
+        - video
+        - video_from_image
+        - 3d
+        - remove_background / upscale_image / restore_face
+        - colorize_image / deblur_image / remove_object
+        - detect_nsfw / detect_objects
         - create_payment
         - check_payment_status
         - check_job_status / get_job_result
+        - request_refund
         - Other
     validations:
       required: true
@@ -52,7 +59,7 @@ body:
     attributes:
       label: What happened?
       description: Describe the issue. Include error messages, HTTP status codes, or unexpected responses.
-      placeholder: "I called generate_image with prompt 'sunset over mountains' and got a 500 error..."
+      placeholder: "I called image with prompt 'sunset over mountains' and got a 500 error..."
     validations:
       required: true
   - type: textarea

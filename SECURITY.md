@@ -8,7 +8,7 @@ Sats4AI handles Bitcoin Lightning payments. We take security seriously.
 
 ### How to report
 
-Email **security@sats4ai.com** with:
+Email **sats4ai@gmail.com** with:
 
 1. Description of the vulnerability
 2. Steps to reproduce
@@ -33,7 +33,7 @@ In scope:
 Out of scope:
 - Rate limiting or resource exhaustion on free/public endpoints
 - Self-XSS or issues requiring physical access
-- Third-party service vulnerabilities (Blink, OpenNode, Replicate, etc.)
+- Vulnerabilities in upstream payment or AI providers (report those to the affected vendor)
 - Social engineering
 
 ### Safe harbor

@@ -12,7 +12,7 @@ A remote [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server
 
 ### Claude Desktop
 
-Add to your `claude_desktop_config.json`:
+Add to your `claude_desktop_config.json` (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS, `%APPDATA%\Claude\claude_desktop_config.json` on Windows):
 
 ```json
 {
@@ -95,6 +95,19 @@ https://sats4ai.com/api/mcp
 
 This is a remote HTTP server — no local process, no dependencies, no installation needed.
 
+## What Can It Do?
+
+Once connected, just ask your agent. These prompts exercise the full flow — discover, pay the Lightning invoice, get the result:
+
+- *"Translate this paragraph to Spanish with Sats4AI — create the payment, pay the invoice with my lightning wallet, then run the translation."*
+- *"Check what an SMS to +33612345678 costs, then send it: 'Your appointment is confirmed for 3pm tomorrow.'"*
+- *"Generate an image of a lighthouse in a thunderstorm — pay the invoice and show me the result."*
+- *"Send an AI voice agent to call +14155551234 and reschedule my dentist appointment, then give me the transcript."*
+- *"Turn this EPUB into an audiobook — create the payment, then poll `check_job_status` until it's done."*
+- *"Remove the background from this image."*
+- *"Transcribe this audio file, then translate the transcript to English."*
+- *"Get a quote for faxing this 3-page PDF to +4930123456, then send it."*
+
 ## Available Tools
 
 ### AI Generation
@@ -127,7 +140,7 @@ This is a remote HTTP server — no local process, no dependencies, no installat
 | `detect_nsfw` | Classify image safety (normal/suggestive/explicit) | 2 sats |
 | `detect_objects` | Detect objects with bounding boxes (Grounding DINO) | 5 sats |
 | `remove_object` | Remove objects by description — no mask needed | 15 sats |
-| `image_edit` | Edit images with AI instructions | Dynamic |
+| `image_edit` | Edit images with AI instructions | Dynamic (varies by model) — check `get_model_pricing` |
 
 ### Vision & Documents
 | Tool | Description | Price |
@@ -143,9 +156,9 @@ This is a remote HTTP server — no local process, no dependencies, no installat
 | Tool | Description | Price |
 |------|-------------|-------|
 | `send_email` | Send email to any address | 200 sats |
-| `send_sms` | Send SMS worldwide | Dynamic |
-| `place_call` | Place automated phone calls | Dynamic |
-| `ai_call` | Send an AI voice agent to make a two-way call | Dynamic (~150-250 sats/call) |
+| `send_sms` | Send SMS worldwide | Dynamic (varies by destination) — `create_payment` returns the exact quote |
+| `place_call` | Place automated phone calls | Dynamic (varies by destination) — `create_payment` returns the exact quote |
+| `ai_call` | Send an AI voice agent to make a two-way call | Dynamic (~150-250 sats/call) — `create_payment` returns the exact quote |
 | `send_fax` | Send a fax worldwide (PDF URL or typed text) | 500 sats (≤10 pages), +50 sats/page after |
 | `receive_fax` | Open a 24h window to receive a fax, delivered to email | 500 sats (+200 OCR add-on) |
 
