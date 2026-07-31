@@ -116,15 +116,16 @@ Once connected, just ask your agent. These prompts exercise the full flow — di
 | `image` | Generate images from text prompts | 100-200 sats |
 | `video` | Generate videos from text prompts | 50 sats/unit |
 | `video_from_image` | Animate a still image into video | 100 sats/sec |
-| `text` | Chat with AI language models (262K context) | ~1 sat/100 chars |
+| `text` | Chat with AI language models (Kimi K3, 1M context, vision) | ~1 sat/10 chars (best) · ~1 sat/1000 (standard) |
 | `translate_text` | Translate text across 119 languages | ~1 sat/1000 chars |
-| `music` | Generate songs with AI vocals | 100 sats |
+| `translate_rare_language` | Translate into **452 languages frontier models don't serve** — Bhojpuri, Maithili, Magahi, Manipuri, Quechua, Shan… each with a measured quality score | from 50 sats |
+| `music` | Generate songs with AI vocals | 500 sats |
 | `3d` | Convert a photo to a 3D GLB model | 350 sats |
 
 ### Audio & Speech
 | Tool | Description | Price |
 |------|-------------|-------|
-| `tts` | Text to speech (467 voices, 29 languages) | 300 sats |
+| `tts` | Text to speech (3 tiers, 602+ languages) | per-char, from 1 sat |
 | `transcription` | Speech to text (13 languages) | 10 sats/min |
 | `voice_clone` | Clone a voice from an audio sample | 7,500 sats |
 | `epub_to_audiobook` | Convert books (EPUB/PDF/TXT) to AI-narrated audiobooks | 500+ sats |
@@ -139,7 +140,7 @@ Once connected, just ask your agent. These prompts exercise the full flow — di
 | `deblur_image` | Remove camera-shake blur (NAFNet, ECCV 2022) | 20 sats |
 | `detect_nsfw` | Classify image safety (normal/suggestive/explicit) | 2 sats |
 | `detect_objects` | Detect objects with bounding boxes (Grounding DINO) | 5 sats |
-| `remove_object` | Remove objects by description — no mask needed | 15 sats |
+| `remove_object` | Remove objects by description — no mask needed | 320 sats |
 | `image_edit` | Edit images with AI instructions | Dynamic (varies by model) — check `get_model_pricing` |
 
 ### Vision & Documents
