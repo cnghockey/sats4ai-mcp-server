@@ -47,3 +47,103 @@ if (errors.length) {
   process.exit(1);
 }
 console.log("server.json in sync with package.json (v" + pkg.version + ")");
+
+// ─── README price drift ──────────────────────────────────────────────────────
+// This gate checked version sync and nothing else, so the README's price table
+// rotted unnoticed: at v1.5.6 EIGHT of its prices disagreed with what the API
+// actually charges — 3d said 350 against a real 1600, remove_object 320 against
+// 130, deblur 20 against 110, extract_receipt 50 against 25 — and `video` /
+// `video_from_image` published the ModelPayment FLOOR (50, 100) as if it were
+// the per-second rate. This package is how agents learn what things cost, and
+// it lives in a different repo from the pricing, so nothing upstream could see
+// it. Now it diffs against the live manifest at publish time.
+//
+// FAIL-SOFT on network trouble, FAIL-HARD on a real mismatch: an unreachable
+// manifest must not block a publish (offline, CI without egress), but a
+// manifest that answers and disagrees is exactly the bug this exists for.
+const README_PRICES = {
+  // README tool name -> [manifest service id, expected flat sats]
+  // Only FLAT services are pinned. Dynamic ones (video, sms, calls, tts, text)
+  // have no single number to compare and the README states them as ranges.
+  music: ["generate-music", 500],
+  "3d": ["generate-3d-model", 1600],
+  vision: ["analyze-image", 21],
+  voice_clone: ["clone-voice", 7500],
+  transcription: ["transcribe-audio", 10],
+  ocr: ["extract-document", 10],
+  extract_receipt: ["extract-receipt", 25],
+  file_convert: ["convert-file", 100],
+  pdf_merge: ["merge-pdfs", 100],
+  convert_html_to_pdf: ["convert-html-to-pdf", 50],
+  send_email: ["send-email", 200],
+  e_signature: ["e-signature", 1000],
+  boardingpass_wallet: ["boardingpass-wallet", 100],
+  remove_background: ["remove-background", 44],
+  upscale_image: ["upscale-image", 5],
+  restore_face: ["restore-face", 25],
+  colorize_image: ["colorize-image", 5],
+  deblur_image: ["deblur-image", 110],
+  detect_nsfw: ["detect-nsfw", 2],
+  detect_objects: ["detect-objects", 5],
+  remove_object: ["remove-object", 130],
+};
+
+(async () => {
+  const readme = fs.readFileSync(path.join(__dirname, "README.md"), "utf8");
+  let live;
+  try {
+    const res = await fetch("https://sats4ai.com/.well-known/l402-services", {
+      signal: AbortSignal.timeout(20000),
+    });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    live = await res.json();
+  } catch (e) {
+    console.warn(`price drift check SKIPPED — could not reach the live manifest (${e.message}).`);
+    console.warn("Publishing anyway; re-run this check when you have network.");
+    return;
+  }
+
+  const byId = Object.fromEntries((live.services || []).map((s) => [s.id, s]));
+  const priceDrift = [];
+  let pinned = 0;
+
+  for (const [tool, [id, expected]] of Object.entries(README_PRICES)) {
+    const amount = byId[id] && byId[id].pricing && byId[id].pricing.amount;
+    if (typeof amount !== "number") {
+      priceDrift.push(`${tool}: "${id}" has no flat amount in the live manifest — remap or unpin it`);
+      continue;
+    }
+    // 1. Does the README table still agree with what the API charges?
+    const row = readme.split("\n").find((l) => l.includes("`" + tool + "`"));
+    if (!row) {
+      priceDrift.push(`${tool}: no README row found — the table changed shape`);
+      continue;
+    }
+    pinned++;
+    const nums = [...row.matchAll(/([\d,]+)\s*sats?/gi)].map((m) => Number(m[1].replace(/,/g, "")));
+    if (!nums.includes(amount)) {
+      priceDrift.push(
+        `${tool}: README says ${nums.join("/") || "(no number)"} but the API charges ${amount} sats`,
+      );
+    }
+    // 2. Does the pin in THIS file still match? Catches a reprice that updated
+    //    the README by hand and left the guard describing the old world.
+    if (amount !== expected) {
+      priceDrift.push(
+        `${tool}: pinned ${expected} here but the API charges ${amount} — update BOTH the README row and the pin`,
+      );
+    }
+  }
+
+  // A pin list that matches nothing passes vacuously — the exact failure this
+  // check exists to prevent — so refuse to be silently empty.
+  if (pinned < Object.keys(README_PRICES).length - 2) {
+    console.error(`price drift check FAILED: only ${pinned} README rows matched — the table changed shape.`);
+    process.exit(1);
+  }
+  if (priceDrift.length) {
+    console.error("README price drift FAILED:\n  - " + priceDrift.join("\n  - "));
+    process.exit(1);
+  }
+  console.log(`README prices agree with the live API (${pinned} services checked)`);
+})();
