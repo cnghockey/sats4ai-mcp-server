@@ -114,13 +114,13 @@ Once connected, just ask your agent. These prompts exercise the full flow — di
 | Tool | Description | Price |
 |------|-------------|-------|
 | `image` | Generate images from text prompts | 100-200 sats |
-| `video` | Generate videos from text prompts | 50 sats/unit |
-| `video_from_image` | Animate a still image into video | 100 sats/sec |
+| `video` | Generate videos from text prompts | ~310-1720 sats/sec by resolution |
+| `video_from_image` | Animate a still image into video | ~310-1720 sats/sec by resolution |
 | `text` | Chat with AI language models (Kimi K3, 1M context, vision) | ~1 sat/10 chars (best) · ~1 sat/1000 (standard) |
 | `translate_text` | Translate text across 119 languages | ~1 sat/1000 chars |
 | `translate_rare_language` | Translate into **452 languages frontier models don't serve** — Bhojpuri, Maithili, Magahi, Manipuri, Quechua, Shan… each with a measured quality score | from 50 sats |
 | `music` | Generate songs with AI vocals | 500 sats |
-| `3d` | Convert a photo to a 3D GLB model | 350 sats |
+| `3d` | Convert a photo to a 3D GLB model | 1,600 sats |
 
 ### Audio & Speech
 | Tool | Description | Price |
@@ -133,14 +133,14 @@ Once connected, just ask your agent. These prompts exercise the full flow — di
 ### Image Processing
 | Tool | Description | Price |
 |------|-------------|-------|
-| `remove_background` | Remove background from any image (BiRefNet, SOTA) | 5 sats |
+| `remove_background` | Remove background from any image (BiRefNet, SOTA) | 44 sats |
 | `upscale_image` | Upscale images 2x/4x with Real-ESRGAN | 5 sats |
-| `restore_face` | Restore blurry/damaged faces (CodeFormer) | 5 sats |
+| `restore_face` | Restore blurry/damaged faces (CodeFormer) | 25 sats |
 | `colorize_image` | Colorize B&W photos (DDColor, ICCV 2023) | 5 sats |
-| `deblur_image` | Remove camera-shake blur (NAFNet, ECCV 2022) | 20 sats |
+| `deblur_image` | Remove camera-shake blur (NAFNet, ECCV 2022) | 110 sats |
 | `detect_nsfw` | Classify image safety (normal/suggestive/explicit) | 2 sats |
 | `detect_objects` | Detect objects with bounding boxes (Grounding DINO) | 5 sats |
-| `remove_object` | Remove objects by description — no mask needed | 320 sats |
+| `remove_object` | Remove objects by description — no mask needed | 130 sats |
 | `image_edit` | Edit images with AI instructions | Dynamic (varies by model) — check `get_model_pricing` |
 
 ### Vision & Documents
@@ -148,10 +148,12 @@ Once connected, just ask your agent. These prompts exercise the full flow — di
 |------|-------------|-------|
 | `vision` | Analyze and describe image content | 21 sats |
 | `ocr` | Extract text from PDFs and images | 10 sats/page |
-| `extract_receipt` | Receipt to structured JSON | 50 sats |
+| `extract_receipt` | Receipt to structured JSON | 25 sats/page |
 | `file_convert` | Convert between 200+ file formats | 100 sats |
 | `pdf_merge` | Merge multiple PDFs into one | 100 sats |
 | `convert_html_to_pdf` | HTML/Markdown to PDF | 50 sats |
+| `e_signature` | Sign a PDF with a typed or drawn signature | 1,000 sats |
+| `boardingpass_wallet` | Airline boarding pass (PDF/screenshot) to a Google Wallet pass | 100 sats/pass |
 
 ### Communication
 | Tool | Description | Price |
