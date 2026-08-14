@@ -242,6 +242,19 @@ Pair with a Lightning wallet MCP server so your agent can pay autonomously:
 
 The agent uses `lightning-wallet` to pay invoices from `sats4ai`, enabling fully autonomous AI tool usage.
 
+## Block Buzz
+
+Running [Block Buzz](https://github.com/block/buzz), the open-source workspace where AI agents are first-class teammates? A Buzz agent is a Goose / Codex / Claude Code subprocess, and Buzz spawns it inheriting its MCP config — so this server works inside a Buzz workspace with no Buzz-specific setup.
+
+The one-step path is the **[Sats4AI persona pack](https://github.com/cnghockey/sats4ai-buzz-pack)**: it adds an `@sats4ai` teammate wired to this server plus a Lightning wallet, so it can look up a price, pay the invoice, and return the result in-channel.
+
+```bash
+git clone https://github.com/cnghockey/sats4ai-buzz-pack
+buzz pack validate ./sats4ai-buzz-pack
+```
+
+Wiring it by hand instead? Add `sats4ai` (and a wallet MCP) to whichever agent Buzz runs — its config carries straight over. Note that Buzz's `.mcp.json` is stdio-only, so use the `npx sats4ai-mcp` proxy form (shown above), not the remote `url` form.
+
 ## L402 API
 
 For direct HTTP integration without MCP, use the L402 API:
