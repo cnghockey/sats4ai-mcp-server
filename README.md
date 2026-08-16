@@ -114,8 +114,8 @@ Once connected, just ask your agent. These prompts exercise the full flow — di
 | Tool | Description | Price |
 |------|-------------|-------|
 | `image` | Generate images from text prompts | 100-200 sats |
-| `video` | Generate videos from text prompts | ~310-1720 sats/sec by resolution |
-| `video_from_image` | Animate a still image into video | ~310-1720 sats/sec by resolution |
+| `video` | Generate videos from text prompts | ~250-400 sats/sec by resolution (768p 250 / 2K 400) |
+| `video_from_image` | Animate a still image into video | ~250-400 sats/sec by resolution (768p 250 / 2K 400) |
 | `text` | Chat with AI language models (Kimi K3, 1M context, vision) | ~1 sat/10 chars (best) · ~1 sat/1000 (standard) |
 | `translate_text` | Translate text across 119 languages | ~1 sat/1000 chars |
 | `translate_rare_language` | Translate into **452 languages frontier models don't serve** — Bhojpuri, Maithili, Magahi, Manipuri, Quechua, Shan… each with a measured quality score | from 50 sats |
