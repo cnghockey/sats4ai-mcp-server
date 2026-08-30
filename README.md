@@ -1,5 +1,7 @@
 # sats4ai-mcp
 
+[![MCP Queen operational grade](https://mcpqueen.com/badge/io.github.cnghockey/sats4ai.svg)](https://mcpqueen.com/s/io.github.cnghockey/sats4ai)
+
 <a href="https://glama.ai/mcp/servers/@cnghockey/sats4ai">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@cnghockey/sats4ai/badge" />
 </a>
