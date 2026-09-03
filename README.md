@@ -117,10 +117,16 @@ Once connected, just ask your agent. These prompts exercise the full flow — di
 | `video` | Generate videos from text prompts | ~250-400 sats/sec by resolution (768p 250 / 2K 400) |
 | `video_from_image` | Animate a still image into video | ~250-400 sats/sec by resolution (768p 250 / 2K 400) |
 | `text` | Chat with AI language models (Kimi K3, 1M context, vision) | ~1 sat/10 chars (best) · ~1 sat/1000 (standard) |
-| `translate_text` | Translate text across 119 languages | ~1 sat/1000 chars |
+| `translate_text` | Translate text across 119 languages | from 1 sat/1000 chars |
 | `translate_rare_language` | Translate into **452 languages frontier models don't serve** — Bhojpuri, Maithili, Magahi, Manipuri, Quechua, Shan… each with a measured quality score | from 50 sats |
 | `music` | Generate songs with AI vocals | 500 sats |
 | `3d` | Convert a photo to a 3D GLB model | 1,600 sats |
+
+> **Translation price varies by language.** The target language picks the engine, so a language
+> served by a stronger model costs more than the standard 1 sat/1000 characters. `GET /api/languages`
+> returns the exact price, the model and its measured chrF score for every language, and the 402
+> challenge always quotes the real amount before you pay.
+
 
 ### Audio & Speech
 | Tool | Description | Price |
