@@ -135,6 +135,7 @@ Once connected, just ask your agent. These prompts exercise the full flow — di
 | `transcription` | Speech to text (13 languages) | 10 sats/min |
 | `voice_clone` | Clone a voice from an audio sample | 7,500 sats |
 | `epub_to_audiobook` | Convert books (EPUB/PDF/TXT) to AI-narrated audiobooks | 500+ sats |
+| `translate_epub` | Translate a whole EPUB into another language — EPUB in, EPUB out, markup intact (async; `create_payment` needs `characterCount` + `targetLanguage`) | per character on the target language's engine rate, min 50 sats |
 
 ### Image Processing
 | Tool | Description | Price |
@@ -178,7 +179,7 @@ Once connected, just ask your agent. These prompts exercise the full flow — di
 | `get_model_pricing` | Get pricing for a specific model |
 | `create_payment` | Create a Lightning invoice for a service |
 | `check_payment_status` | Check if payment was received |
-| `check_job_status` | Poll async jobs (video, 3D, audiobook) |
+| `check_job_status` | Poll async jobs (video, 3D, audiobook, EPUB translation) |
 | `get_job_result` | Get completed job results |
 | `request_refund` | Request a refund for a failed service |
 | `vote_on_service` | Upvote or downvote a planned service |
