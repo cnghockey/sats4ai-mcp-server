@@ -42,6 +42,7 @@ const TOOLS = [
   "remove_object",
   "colorize_image",
   "deblur_image",
+  "render_card",
 ];
 
 const HELPER_TOOLS = [
