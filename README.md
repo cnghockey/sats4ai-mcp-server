@@ -219,7 +219,7 @@ When a paid tool fails after payment, the JSON-RPC error response includes refun
 
 Claim the refund using any LNURL-compatible wallet or the `claim_lnurl_withdraw` tool from `lightning-wallet`.
 
-Errors also carry an `error_code` plus a recovery `suggestion` in `error.data`. Payment-lifecycle codes: `PAYMENT_NOT_FOUND` (wrong paymentId), `PAYMENT_PENDING` (invoice not paid yet), `PAYMENT_ALREADY_USED` (each payment covers one call). Full catalog: `GET https://sats4ai.com/api/error-codes`.
+Errors also carry an `error_code` plus a recovery `suggestion`, an `example`, and — when the code is retryable — `retry_after_seconds`, in `error.data`. The same fields appear on a tool result with `isError: true` and on every `FAILED` final from `await_result`, so one vocabulary covers every path: branch on `error_code`, never on the `error` text. Payment-lifecycle codes: `PAYMENT_NOT_FOUND` (wrong paymentId), `PAYMENT_PENDING` (invoice not paid yet), `PAYMENT_ALREADY_USED` (each payment covers one call); a refunded failure reads `L402_REFUND_ISSUED` with the `refund` attached. Full catalog: `GET https://sats4ai.com/api/error-codes`.
 
 ## Payment via Agent Wallets
 
