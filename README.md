@@ -145,6 +145,7 @@ Once connected, just ask your agent. These prompts exercise the full flow — di
 | `restore_face` | Restore blurry/damaged faces (CodeFormer) | 25 sats |
 | `colorize_image` | Colorize B&W photos (DDColor, ICCV 2023) | 5 sats |
 | `deblur_image` | Remove camera-shake blur (NAFNet, ECCV 2022) | 110 sats |
+| `render_card` | Typographic title card (PNG/JPEG) — deterministic layout, the text you send is the text that appears | 5 sats |
 | `detect_nsfw` | Classify image safety (normal/suggestive/explicit) | 2 sats |
 | `detect_objects` | Detect objects with bounding boxes (Grounding DINO) | 5 sats |
 | `remove_object` | Remove objects by description — no mask needed | 130 sats |
@@ -168,7 +169,7 @@ Once connected, just ask your agent. These prompts exercise the full flow — di
 | `send_email` | Send email to any address | 200 sats |
 | `send_sms` | Send SMS worldwide | Dynamic (varies by destination) — `create_payment` returns the exact quote |
 | `place_call` | Place automated phone calls | Dynamic (varies by destination) — `create_payment` returns the exact quote |
-| `ai_call` | Send an AI voice agent to make a two-way call | Dynamic (~150-250 sats/call) — `create_payment` returns the exact quote |
+| `ai_call` | Send an AI voice agent to make a two-way call | Varies by destination and duration — `create_payment` returns the exact quote |
 | `send_fax` | Send a fax worldwide (PDF URL or typed text) | 500 sats (≤10 pages), +50 sats/page after |
 | `receive_fax` | Open a 24h window to receive a fax, delivered to email | 500 sats (+200 OCR add-on) |
 
