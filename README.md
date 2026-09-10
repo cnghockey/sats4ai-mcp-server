@@ -119,7 +119,7 @@ Once connected, just ask your agent. These prompts exercise the full flow — di
 | `text` | Chat with AI language models (Kimi K3, 1M context, vision) | ~1 sat/10 chars (best) · ~1 sat/1000 (standard) |
 | `translate_text` | Translate text across 119 languages | from 1 sat/1000 chars |
 | `translate_rare_language` | Translate into **452 languages frontier models don't serve** — Bhojpuri, Maithili, Magahi, Manipuri, Quechua, Shan… each with a measured quality score | from 50 sats |
-| `music` | Generate songs with AI vocals | 500 sats |
+| `music` | Generate songs with AI vocals, or an instrumental (structure tags, no words) | 5 sats/sec, 15-300s (75-1,500 sats) · written lyrics +25 |
 | `3d` | Convert a photo to a 3D GLB model | 1,600 sats |
 
 > **Translation price varies by language.** The target language picks the engine, so a language

@@ -63,9 +63,14 @@ console.log("server.json in sync with package.json (v" + pkg.version + ")");
 // manifest that answers and disagrees is exactly the bug this exists for.
 const README_PRICES = {
   // README tool name -> [manifest service id, expected flat sats]
-  // Only FLAT services are pinned. Dynamic ones (video, sms, calls, tts, text)
-  // have no single number to compare and the README states them as ranges.
-  music: ["generate-music", 500],
+  // Only FLAT services are pinned. Dynamic ones (video, sms, calls, tts, text,
+  // and MUSIC since 2026-09-10) have no single number to compare and the README
+  // states them as ranges.
+  //
+  // ⚠ `music` LEFT this list when it moved to per-second pricing (5 sats/sec,
+  // 15-300s). Its ModelPayment row is now a 75-sat FLOOR, so re-pinning it to
+  // any single number would re-create the exact defect the comment above
+  // describes for video: publishing the floor as if it were the price.
   "3d": ["generate-3d-model", 1600],
   vision: ["analyze-image", 21],
   voice_clone: ["clone-voice", 7500],
