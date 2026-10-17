@@ -179,7 +179,8 @@ Once connected, just ask your agent. These prompts exercise the full flow — di
 | `list_models` | Browse available AI models and pricing |
 | `get_model_pricing` | Get pricing for a specific model |
 | `create_payment` | Create a Lightning invoice for a service |
-| `check_payment_status` | Check if payment was received |
+| `check_payment_status` | Check if payment was received. With a cart id, it shows the state of each item |
+| `create_cart` | Pay for 2 to 10 calls with ONE invoice (up to 2,000 sats in all). Each item then works as a normal payment. An item you do not use is refunded for its own price after about an hour |
 | `check_job_status` | Poll async jobs (video, 3D, audiobook, EPUB translation) |
 | `get_job_result` | Get completed job results |
 | `request_refund` | Request a refund for a failed service |
@@ -241,6 +242,8 @@ Pair with a Lightning wallet MCP server so your agent can pay autonomously:
 ```
 
 The agent uses `lightning-wallet` to pay invoices from `sats4ai`, enabling fully autonomous AI tool usage.
+
+Some agent wallets cap how many payments they send in an hour. `create_cart` takes 2 to 10 items and returns ONE invoice, so a whole task is ONE payment. Each item then works with its own `paymentId`. Keep those ids: the cart id cannot run a tool.
 
 ## Block Buzz
 

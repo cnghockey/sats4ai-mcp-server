@@ -48,6 +48,7 @@ const TOOLS = [
 const HELPER_TOOLS = [
   "create_payment",
   "check_payment_status",
+  "create_cart",
   "check_job_status",
   "get_job_result",
   "list_models",
