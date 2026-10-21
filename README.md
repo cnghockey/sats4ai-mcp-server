@@ -170,6 +170,10 @@ Once connected, just ask your agent. These prompts exercise the full flow — di
 | `send_sms` | Send SMS worldwide | Dynamic (varies by destination) — `create_payment` returns the exact quote |
 | `place_call` | Place automated phone calls | Dynamic (varies by destination) — `create_payment` returns the exact quote |
 | `ai_call` | Send an AI voice agent to make a two-way call | Varies by destination and duration — `create_payment` returns the exact quote |
+| `open_voice_bridge` | Open a phone call that YOUR agent drives, one turn at a time. We dial and transcribe. Your agent replies. Turn-based, not real-time: about 2 seconds of ours pass between the callee's last word and the start of your reply, plus your model's thinking time | A deposit, priced by destination — `create_payment` returns the exact quote |
+| `voice_bridge_say` | Speak into the open call: text (602 languages) or your own audio. Keep each reply to one or two sentences (700 speech units at most). The callee cannot interrupt | Included in the deposit |
+| `poll_voice_bridge` | Read what the callee said. Pass `waitMs` (up to 25000) to get the transcript as soon as they finish talking | Included in the deposit |
+| `end_voice_bridge` | Hang up. Returns the final transcript and a refund link for the unused deposit time | Included in the deposit |
 | `send_fax` | Send a fax worldwide (PDF URL or typed text) | 500 sats (≤10 pages), +50 sats/page after |
 | `receive_fax` | Open a 24h window to receive a fax, delivered to email | 500 sats (+200 OCR add-on) |
 
