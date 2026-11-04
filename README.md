@@ -336,6 +336,17 @@ Found a vulnerability? **Do not open a public issue.** Email [sats4ai@gmail.com]
 - **Semantic Search**: [sats4ai.com/api/discover](https://sats4ai.com/api/discover)
 - **Security Policy**: [SECURITY.md](SECURITY.md)
 
+## Support / donate
+Your agent just got a wallet and 40+ tools. Please do not ask us what it bought.
+
+If this was useful to you and you like what we do, consider sending a few sats our way:
+
+⚡ **`sats4ai@blink.sv`**
+
+(It's a **Bitcoin Lightning** address: pay it from any Lightning wallet. Looks like an email, isn't one. Lightning sats only: no on-chain, no fiat, no cards, no altcoins, no refunds on gratitude.)
+
+Not this time? That's cool too. We've been there. A star on the repo is a free hug.
+
 ## License
 
 MIT
