@@ -113,7 +113,7 @@ Once connected, just ask your agent. These prompts exercise the full flow — di
 ### AI Generation
 | Tool | Description | Price |
 |------|-------------|-------|
-| `image` | Generate images from text prompts | 100-200 sats |
+| `image` | Generate images from text prompts | 100-1,200 sats |
 | `video` | Generate videos from text prompts | ~250-400 sats/sec by resolution (768p 250 / 2K 400) |
 | `video_from_image` | Animate a still image into video | ~250-400 sats/sec by resolution (768p 250 / 2K 400) |
 | `text` | Chat with AI language models (Kimi K3, 1M context, vision) | ~1 sat/10 chars (best) · ~1 sat/1000 (standard) |
