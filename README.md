@@ -100,13 +100,13 @@ This is a remote HTTP server — no local process, no dependencies, no installat
 Once connected, just ask your agent. These prompts exercise the full flow — discover, pay the Lightning invoice, get the result:
 
 - *"Translate this paragraph to Spanish with Sats4AI — create the payment, pay the invoice with my lightning wallet, then run the translation."*
-- *"Check what an SMS to +33612345678 costs, then send it: 'Your appointment is confirmed for 3pm tomorrow.'"*
+- *"Check what an SMS to +33639980123 costs, then send it: 'Your appointment is confirmed for 3pm tomorrow.'"*
 - *"Generate an image of a lighthouse in a thunderstorm — pay the invoice and show me the result."*
-- *"Send an AI voice agent to call +14155551234 and reschedule my dentist appointment, then give me the transcript."*
+- *"Send an AI voice agent to call +14155550123 and reschedule my dentist appointment, then give me the transcript."*
 - *"Turn this EPUB into an audiobook — create the payment, then poll `check_job_status` until it's done."*
 - *"Remove the background from this image."*
 - *"Transcribe this audio file, then translate the transcript to English."*
-- *"Get a quote for faxing this 3-page PDF to +4930123456, then send it."*
+- *"Get a quote for faxing this 3-page PDF to +493023125123, then send it."*
 
 ## Available Tools
 
