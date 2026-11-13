@@ -335,6 +335,7 @@ Found a vulnerability? **Do not open a public issue.** Email [sats4ai@gmail.com]
 - **Service Discovery**: [sats4ai.com/.well-known/l402-services](https://sats4ai.com/.well-known/l402-services)
 - **Semantic Search**: [sats4ai.com/api/discover](https://sats4ai.com/api/discover)
 - **Security Policy**: [SECURITY.md](SECURITY.md)
+- **More from us**: [Wandless VR Video Player](https://github.com/cnghockey/wandless-vr-video-player) · [VLC for Android subtitle fix](https://github.com/cnghockey/vlc-android-subtitle-url-fix) · [Bestway Spa Relay](https://github.com/cnghockey/bestway-spa-relay) · [EvoStart Car Relay](https://github.com/cnghockey/evo-start-relay)
 
 ## Support / donate
 Your agent just got a wallet and 40+ tools. Please do not ask us what it bought.
